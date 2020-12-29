@@ -1,30 +1,12 @@
 <template>
-  <div id="app" >
-    <div>
-      
-      <Header />
-      <Flags />
-
+  <div id="app">
+    <div >
+      <!-- <router-link to="/">Home</router-link> |
+      <router-link to="/show">About</router-link> -->
     </div>
-    
-    
+    <router-view/>
   </div>
 </template>
-
-<script>
-import Flags from './components/Flags'
-import Header from './components/layout/Header'
-
-
-export default {
-  name: 'App',
-  components: {
-    Flags,
-    Header
-    
-  }
-}
-</script>
 
 <style>
 #app {
@@ -33,6 +15,18 @@ export default {
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
-  margin-top: 60px;
+}
+
+#nav {
+  padding: 30px;
+}
+
+#nav a {
+  font-weight: bold;
+  color: #2c3e50;
+}
+
+#nav a.router-link-exact-active {
+  color: #42b983;
 }
 </style>

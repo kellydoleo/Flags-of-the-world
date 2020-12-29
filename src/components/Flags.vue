@@ -1,9 +1,9 @@
 <template>
     <div id="get-flags" >
         
-         <h1>Flags</h1>
+         
          <div v-bind:key="flag" v-for="flag in flags">
-             <img :src="flag.flag"/>
+        <router-link :to="{ name: 'Show', params: {name : flag.name}}" > <img :src="flag.flag"/> </router-link>
              <div>
              <h3>{{flag.name}}</h3>
              <p>Population: {{flag.population}}</p>
