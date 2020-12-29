@@ -1,19 +1,19 @@
 <template>
     <div id="get-flags" >
-         <input type="text" v-model="searchQuery" placeholder="Search..." />
-         
-         <div v-bind:key="flag" v-for="flag in resultQuery">
+         <input class="search-bar" type="text" v-model="searchQuery" placeholder="Search..." />
+         <div class="holding-flags">
+         <div class="flags" v-bind:key="flag" v-for="flag in resultQuery">
             <router-link :to="{ name: 'Show', params: {name : flag.name}}" > <img :src="flag.flag"/> </router-link>
-             <div>
+             <div class="demo-info" >
              <h3>{{flag.name}}</h3>
              <p>Population: {{flag.population}}</p>
              <p>Region: {{flag.region}}</p>
              <p>Capital: {{flag.capital}}</p>
              </div>
-
+        </div>
          </div>
 
-         <ShowFlag v-bind:flag="flags" />
+         <!-- <ShowFlag v-bind:flag="flags" v-on:one-flag="oneFlag" /> -->
 
     </div>
 
@@ -22,13 +22,13 @@
 
 <script>
 import axios from 'axios';
-import ShowFlag from '../views/showFlag'
+// import ShowFlag from '../views/showFlag'
 
 
 export default {
     name: "Flags",
     components: {
-        ShowFlag
+        // ShowFlag
     },
     data() {
         return {
@@ -38,14 +38,13 @@ export default {
         }
 
     },
-    methods: {
-
-    },
+   
     created() {
         axios.get('https://restcountries.eu/rest/v2/all')
         .then(res => this.flags = res.data)
         .catch(err => console.log(err))
     },
+   
     computed: {
         resultQuery() {
             if(this.searchQuery) {
@@ -56,6 +55,8 @@ export default {
                 return this.flags
             }
         }
+        
+        
     }
    
     
@@ -63,5 +64,64 @@ export default {
 </script>
 
 <style scoped>
+
+img {
+ max-width: 80%;
+ 
+ 
+ 
+}
+
+input {
+    margin-bottom: 5%;
+}
+
+
+
+
+.holding-flags {
+    display: flex;
+    flex-wrap: wrap;
+    
+}
+
+.flags {
+    max-width: 25%;
+    
+    
+}
+
+.search-bar {
+    background: #FFFFFF;
+    border: 5px solid #FFFFFF;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.13);
+    width: 25%;
+    display: inline;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 10px;
+    margin-left: 1%;
+    
+}
+
+.demo-info {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 5px;
+    background: #FFFFFF;
+    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.11);
+    max-width: 75%;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: -4%;
+   
+}
+
+p {
+    margin: 3px;
+}
+
 
 </style>
