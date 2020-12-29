@@ -3,6 +3,7 @@
     <div>
       
       <Header />
+      <!-- <SearchBar v-bind:flag="flags" /> -->
       <Flags />
 
     </div>
@@ -14,13 +15,15 @@
 <script>
 import Flags from '../components/Flags'
 import Header from '../components/layout/Header'
+// import SearchBar from '../components/SearchBar'
 
 
 export default {
   name: 'App',
   components: {
     Flags,
-    Header
+    Header,
+    // SearchBar
     
   }
 }
