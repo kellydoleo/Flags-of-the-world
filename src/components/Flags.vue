@@ -1,10 +1,10 @@
 <template>
     <div id="get-flags" >
-         <input class="search-bar" type="text" v-model="searchQuery" placeholder="Search..." />
+         <input class="search-bar" :class='mode' type="text" v-model="searchQuery" placeholder="Search..." />
          <div class="holding-flags">
          <div class="flags" v-bind:key="flag" v-for="flag in resultQuery">
             <router-link :to="{ name: 'Show', params: {name : flag.name}}" > <img :src="flag.flag"/> </router-link>
-             <div class="demo-info" >
+             <div class="demo-info" :class='mode'>
              <h3>{{flag.name}}</h3>
              <p>Population: {{flag.population}}</p>
              <p>Region: {{flag.region}}</p>
@@ -30,6 +30,7 @@ export default {
     components: {
         // ShowFlag
     },
+    props: ['mode'],
     data() {
         return {
             searchQuery: null,
@@ -102,6 +103,7 @@ input {
     align-items: flex-start;
     padding: 10px;
     margin-left: 1%;
+    margin-top: 3%;
     
 }
 
@@ -121,6 +123,15 @@ input {
 
 p {
     margin: 3px;
+}
+
+.dark .demo-info {
+    background: hsl(209, 23%, 22%);
+}
+
+.dark .search-bar {
+    background: hsl(209, 23%, 22%);
+    border: 5px solid hsl(209, 23%, 22%);
 }
 
 
