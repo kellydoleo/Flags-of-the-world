@@ -1,7 +1,7 @@
 # Flags From Around the World
 
 ## Links
-* Link to deployed site: 
+* Link to deployed site: https://flags-of-the-world.vercel.app/
 * Link to API used: https://restcountries.eu/rest/v2/all 
 
 ## Application Description
